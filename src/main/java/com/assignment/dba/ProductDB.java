@@ -2,10 +2,12 @@ package com.assignment.dba;
 
 import com.assignment.exceptions.NoProductWithIDException;
 import com.assignment.models.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class ProductDB {
     private static ProductDB productDB;
     private final Map<String, Product> products;

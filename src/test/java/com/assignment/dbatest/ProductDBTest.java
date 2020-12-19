@@ -3,9 +3,9 @@ package com.assignment.dbatest;
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
 import com.assignment.models.Product;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductDBTest {
@@ -24,9 +24,9 @@ public class ProductDBTest {
     }
 
     @Test
-    public void testProductNotPresent() throws NoProductWithIDException {
+    public void testProductNotPresent() {
         Exception exception = assertThrows(NoProductWithIDException.class,
-                () ->{db.getProductById("C");});
+                () -> db.getProductById("C"));
         assertNotNull(exception);
     }
 }

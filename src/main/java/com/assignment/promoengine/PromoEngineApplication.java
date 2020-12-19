@@ -2,8 +2,10 @@ package com.assignment.promoengine;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.assignment")
 public class PromoEngineApplication {
 
     public static void main(String[] args) {
