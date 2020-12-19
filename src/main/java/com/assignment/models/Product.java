@@ -4,6 +4,14 @@ public class Product {
     private String productID;
     private double price;
 
+    public Product() {
+    }
+
+    public Product(String productID, double price) {
+        this.productID = productID;
+        this.price = price;
+    }
+
     public String getProductID() {
         return productID;
     }
