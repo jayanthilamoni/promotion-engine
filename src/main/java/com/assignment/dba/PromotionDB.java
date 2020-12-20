@@ -1,10 +1,12 @@
 package com.assignment.dba;
 
 import com.assignment.models.promotion.Promotion;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class PromotionDB {
     private static PromotionDB promotionDB;
     private final Map<String, Promotion> promotions;
@@ -18,6 +20,6 @@ public class PromotionDB {
         return promotionDB;
     }
     public void addPromotion(Promotion promotion){
-        promotions.put(promotion.promoId,promotion);
+        promotions.put(promotion.getPromoId(),promotion);
     }
 }
