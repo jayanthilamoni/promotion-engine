@@ -8,9 +8,7 @@ import com.assignment.models.promotion.NItemsOfSingleProductPromotion;
 import com.assignment.models.promotion.Promotion;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component("defaultPromotionStrategy")
@@ -43,6 +41,11 @@ public class DefaultPromotionStrategy implements PromotionStrategy{
         },(entry)->{return entry;}));
     }
 
+    private Promotion getPromotionWithMaxDiscount(List<Promotion> potentialPromotion,Map<String,CartEntry> cartEntryMap){
+        Optional<Promotion> optionalPromotion =  potentialPromotion.stream()
+                .max(Comparator.comparingDouble(x -> x.getDiscount(cartEntryMap)));
+        return optionalPromotion.orElse(null);
+    }
     public PromotionDB getPromotionDB() {
         return promotionDB;
     }
@@ -55,6 +58,7 @@ public class DefaultPromotionStrategy implements PromotionStrategy{
     public void applyPromotions(Cart cart) {
         Map<String,CartEntry> cartEntryMap = getCartEntryMap(cart);
         List<Promotion> potentialPromotion = getPotentialPromotions(cartEntryMap);
+        Promotion bestPromotion = getPromotionWithMaxDiscount(potentialPromotion,cartEntryMap);
 
     }
 }

@@ -1,5 +1,6 @@
 package com.assignment.models.promotion;
 
+import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
 
 import java.util.Map;
@@ -7,7 +8,7 @@ import java.util.Map;
 public abstract class Promotion {
     private String promoId;
 
-    public abstract void apply();
+    public abstract void apply(Map<String, CartEntry> cartEntryMap, Cart cart);
 
     public abstract double getDiscount(Map<String, CartEntry> cartEntryMap);
     public String getPromoId() {
