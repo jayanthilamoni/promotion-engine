@@ -1,8 +1,5 @@
 package com.assignment.models.cart;
 
-import com.assignment.models.product.Product;
-import org.springframework.lang.Nullable;
-
 public class CartEntryForm {
     private String productId;
     private int quantity;
