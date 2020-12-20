@@ -3,10 +3,7 @@ package com.assignment.controllers;
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
 import com.assignment.models.Product;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProductController {
@@ -26,17 +23,10 @@ public class ProductController {
         return product;
     }
 
-    @GetMapping("/product/add/{productId}/{price}")
-    public String addProduct(@PathVariable String productId, @PathVariable String price){
-        double priceOfProduct;
-        try{
-            priceOfProduct = Double.parseDouble(price);
-        }catch (NumberFormatException exception){
-            return "Cannot create Product with price : "+price;
-        }
-        Product product = new Product(productId,priceOfProduct);
+    @PutMapping("/product/add")
+    public String addProduct(@RequestBody Product product){
         productDB.addProduct(product);
-        return "Product with ID : "+productId+" created successfully";
+        return "Product with ID : "+product.getProductID()+" created successfully";
     }
 
     public ProductDB getProductDB() {
