@@ -2,23 +2,30 @@ package com.assignment.service;
 
 import com.assignment.dba.PromotionDB;
 import com.assignment.factories.PromotionFactory;
+import com.assignment.models.cart.Cart;
 import com.assignment.models.promotion.Promotion;
+import com.assignment.strategies.PromotionStrategy;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PromotionServiceImpl implements PromotionService{
     private PromotionDB promotionDB;
+    private PromotionStrategy promotionStrategy;
 
-    public PromotionServiceImpl(PromotionDB promotionDB) {
+    public PromotionServiceImpl(PromotionDB promotionDB,@Qualifier("defaultPromotionStrategy") PromotionStrategy promotionStrategy) {
         this.promotionDB = promotionDB;
-    }
-
-    @Override
-    public void addPromotion(Promotion promotion) {
-
+        this.promotionStrategy = promotionStrategy;
     }
 
     @Override
     public Promotion getPromotionByType(int promotionType) {
         return PromotionFactory.getPromotion(promotionType);
+    }
+
+    @Override
+    public void applyPromotions(Cart cart) {
+
     }
 
     public PromotionDB getPromotionDB() {
@@ -27,5 +34,13 @@ public class PromotionServiceImpl implements PromotionService{
 
     public void setPromotionDB(PromotionDB promotionDB) {
         this.promotionDB = promotionDB;
+    }
+
+    public PromotionStrategy getPromotionStrategy() {
+        return promotionStrategy;
+    }
+
+    public void setPromotionStrategy(PromotionStrategy promotionStrategy) {
+        this.promotionStrategy = promotionStrategy;
     }
 }

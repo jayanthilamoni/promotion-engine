@@ -2,12 +2,14 @@ package com.assignment.controllers;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
-import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
 import com.assignment.models.cart.CartEntryForm;
 import com.assignment.models.product.Product;
 import com.assignment.service.CartService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class CartController {
 
     @PutMapping("/cart/add")
     public String addCartEntry(@RequestBody CartEntryForm cartEntryForm){
-        Product product = null;
+        Product product;
         try{
             product = productDB.getProductById(cartEntryForm.getProductId());
         }catch (NoProductWithIDException exception){
