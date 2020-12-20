@@ -11,6 +11,7 @@ public class Cart {
     private UUID cartId;
     private List<CartEntry> cartEntries;
     private double discount;
+    private String promotionalMessage;
 
     public Cart() {
         cartEntries = new ArrayList<>();
@@ -38,5 +39,13 @@ public class Cart {
 
     public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    public String getPromotionalMessage() {
+        return promotionalMessage;
+    }
+
+    public void setPromotionalMessage(String promotionalMessage) {
+        this.promotionalMessage = promotionalMessage;
     }
 }

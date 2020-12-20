@@ -27,11 +27,13 @@ public class PromotionsController {
         if(Objects.isNull(promotion)){
             return "No Promotion Found with the Provided ID";
         }
+        //Should move this block to a Populator class
         if(promotion instanceof NItemsOfSingleProductPromotion){
             NItemsOfSingleProductPromotion nItemsOfSingleProductPromotion = (NItemsOfSingleProductPromotion) promotion;
             nItemsOfSingleProductPromotion.setBuyPrice(promotionEntryForm.getOfferPrice());
             nItemsOfSingleProductPromotion.setMultiple(promotionEntryForm.getMultiple());
             nItemsOfSingleProductPromotion.setProductId(promotionEntryForm.getProductA());
+            nItemsOfSingleProductPromotion.setPromoId(promotionEntryForm.getPromotionId());
             getPromotionDB().addPromotion(nItemsOfSingleProductPromotion);
         }else if(promotion instanceof ComboOfTwoProductsPromotion){
             ComboOfTwoProductsPromotion comboOfTwoProductsPromotion = (ComboOfTwoProductsPromotion) promotion;

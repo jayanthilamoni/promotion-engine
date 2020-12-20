@@ -3,8 +3,8 @@ package com.assignment.models.promotion;
 public class PromotionEntryForm {
     private String promotionId;
     private int promotionType;
-    private String ProductA;
-    private String ProductB;
+    private String productA;
+    private String productB;
     private double offerPrice;
     private int multiple;
 
@@ -25,19 +25,19 @@ public class PromotionEntryForm {
     }
 
     public String getProductA() {
-        return ProductA;
+        return productA;
     }
 
     public void setProductA(String productA) {
-        ProductA = productA;
+        this.productA = productA;
     }
 
     public String getProductB() {
-        return ProductB;
+        return productB;
     }
 
     public void setProductB(String productB) {
-        ProductB = productB;
+        this.productB = productB;
     }
 
     public double getOfferPrice() {
