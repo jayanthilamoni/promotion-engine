@@ -1,4 +1,7 @@
 package com.assignment.strategies;
 
-public class PromotionStrategy {
+import com.assignment.models.cart.Cart;
+
+public interface PromotionStrategy {
+    void applyPromotions(Cart cart);
 }

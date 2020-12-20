@@ -22,4 +22,8 @@ public class PromotionDB {
     public void addPromotion(Promotion promotion){
         promotions.put(promotion.getPromoId(),promotion);
     }
+
+    public Map<String, Promotion> getAllPromotions(){
+        return promotions;
+    }
 }
