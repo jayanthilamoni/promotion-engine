@@ -4,12 +4,15 @@ import com.assignment.models.product.Product;
 
 public class CartEntry {
     private Product product;
+    private int quantity;
+    private double discount;
 
     public CartEntry() {
     }
 
-    public CartEntry(Product product) {
+    public CartEntry(Product product,int quantity) {
         this.product = product;
+        this.quantity = quantity;
     }
 
     public Product getProduct() {
@@ -28,5 +31,11 @@ public class CartEntry {
         this.discount = discount;
     }
 
-    private double discount;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

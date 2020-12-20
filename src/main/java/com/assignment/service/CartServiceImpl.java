@@ -16,8 +16,7 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public void addProductToCart(Product product) {
-        CartEntry cartEntry = new CartEntry(product);
+    public void addProductToCart(CartEntry cartEntry) {
         cart.getCartEntries().add(cartEntry);
     }
 

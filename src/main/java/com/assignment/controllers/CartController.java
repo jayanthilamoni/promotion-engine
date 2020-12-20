@@ -2,13 +2,12 @@ package com.assignment.controllers;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
+import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
+import com.assignment.models.cart.CartEntryForm;
 import com.assignment.models.product.Product;
 import com.assignment.service.CartService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,15 +26,16 @@ public class CartController {
         return cartService.getCart();
     }
 
-    @PutMapping("/cart/add/{productId}")
-    public String addCartEntry(@PathVariable String productId){
+    @PutMapping("/cart/add")
+    public String addCartEntry(@RequestBody CartEntryForm cartEntryForm){
         Product product = null;
         try{
-            product = productDB.getProductById(productId);
+            product = productDB.getProductById(cartEntryForm.getProductId());
         }catch (NoProductWithIDException exception){
-            return "No Product found with ID : "+productId;
+            return "No Product found with ID : "+cartEntryForm.getProductId();
         }
-        cartService.addProductToCart(product);
-        return "Product : "+productId+" added to cart";
+        CartEntry cartEntry = new CartEntry(product,cartEntryForm.getQuantity());
+        cartService.addProductToCart(cartEntry);
+        return "Product : "+cartEntryForm.getProductId()+" added to cart";
     }
 }

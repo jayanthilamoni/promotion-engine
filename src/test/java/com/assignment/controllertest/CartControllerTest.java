@@ -2,6 +2,7 @@ package com.assignment.controllertest;
 
 import com.assignment.controllers.CartController;
 import com.assignment.dba.ProductDB;
+import com.assignment.models.cart.CartEntryForm;
 import com.assignment.models.product.Product;
 import com.assignment.service.CartService;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,7 +34,8 @@ public class CartControllerTest {
 
     @Test
     public void whenProductDoesNotExist_returnErrorMessage(){
-        String message = controller.addCartEntry("C");
+        CartEntryForm cartEntryForm = new CartEntryForm("C",5);
+        String message = controller.addCartEntry(cartEntryForm);
         assertTrue(message.contains("No Product"));
     }
 }
