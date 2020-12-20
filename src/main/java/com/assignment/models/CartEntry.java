@@ -3,6 +3,13 @@ package com.assignment.models;
 public class CartEntry {
     private Product product;
 
+    public CartEntry() {
+    }
+
+    public CartEntry(Product product) {
+        this.product = product;
+    }
+
     public Product getProduct() {
         return product;
     }
