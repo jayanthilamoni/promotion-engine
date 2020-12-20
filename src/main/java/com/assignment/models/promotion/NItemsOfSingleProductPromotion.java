@@ -1,5 +1,10 @@
 package com.assignment.models.promotion;
 
+import com.assignment.models.cart.CartEntry;
+import com.assignment.models.product.Product;
+
+import java.util.Map;
+
 public class NItemsOfSingleProductPromotion extends Promotion{
     private String productId;
     private int multiple;
@@ -27,5 +32,19 @@ public class NItemsOfSingleProductPromotion extends Promotion{
 
     public void setBuyPrice(double buyPrice) {
         this.buyPrice = buyPrice;
+    }
+
+    @Override
+    public void apply() {
+
+    }
+
+    @Override
+    public double getDiscount(Map<String, CartEntry> cartEntryMap) {
+        CartEntry cartEntry = cartEntryMap.get(getProductId());
+        double eachPrice = cartEntry.getProduct().getPrice();
+        double currentTotal = (double) cartEntry.getQuantity()*eachPrice;
+        double discountPrice = ((int)(cartEntry.getQuantity()/getMultiple()) *getBuyPrice())+((cartEntry.getQuantity()%getMultiple())*eachPrice);
+        return currentTotal-discountPrice;
     }
 }
