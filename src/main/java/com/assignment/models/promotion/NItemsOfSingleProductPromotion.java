@@ -2,7 +2,6 @@ package com.assignment.models.promotion;
 
 import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
-import com.assignment.models.product.Product;
 
 import java.util.Map;
 
@@ -33,11 +32,6 @@ public class NItemsOfSingleProductPromotion extends Promotion{
 
     public void setBuyPrice(double buyPrice) {
         this.buyPrice = buyPrice;
-    }
-
-    @Override
-    public void apply(Map<String, CartEntry> cartEntryMap, Cart cart) {
-
     }
 
     @Override
