@@ -2,8 +2,8 @@ package com.assignment.controllers;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
-import com.assignment.models.CartEntry;
-import com.assignment.models.Product;
+import com.assignment.models.cart.CartEntry;
+import com.assignment.models.product.Product;
 import com.assignment.service.CartService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

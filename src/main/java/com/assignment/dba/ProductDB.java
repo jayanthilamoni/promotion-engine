@@ -1,7 +1,7 @@
 package com.assignment.dba;
 
 import com.assignment.exceptions.NoProductWithIDException;
-import com.assignment.models.Product;
+import com.assignment.models.product.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

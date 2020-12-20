@@ -1,4 +1,4 @@
-package com.assignment.models;
+package com.assignment.models.product;
 
 public class Product {
     private String productID;

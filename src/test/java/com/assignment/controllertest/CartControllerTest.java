@@ -2,7 +2,7 @@ package com.assignment.controllertest;
 
 import com.assignment.controllers.CartController;
 import com.assignment.dba.ProductDB;
-import com.assignment.models.Product;
+import com.assignment.models.product.Product;
 import com.assignment.service.CartService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

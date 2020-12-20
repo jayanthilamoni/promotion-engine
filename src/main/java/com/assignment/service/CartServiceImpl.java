@@ -1,8 +1,8 @@
 package com.assignment.service;
 
-import com.assignment.models.Cart;
-import com.assignment.models.CartEntry;
-import com.assignment.models.Product;
+import com.assignment.models.cart.Cart;
+import com.assignment.models.cart.CartEntry;
+import com.assignment.models.product.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

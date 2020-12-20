@@ -1,7 +1,7 @@
 package com.assignment.service;
 
-import com.assignment.models.CartEntry;
-import com.assignment.models.Product;
+import com.assignment.models.cart.CartEntry;
+import com.assignment.models.product.Product;
 
 import java.util.List;
 

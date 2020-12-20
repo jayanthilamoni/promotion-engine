@@ -2,7 +2,7 @@ package com.assignment.dbatest;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
-import com.assignment.models.Product;
+import com.assignment.models.product.Product;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

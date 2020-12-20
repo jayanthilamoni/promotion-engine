@@ -1,4 +1,6 @@
-package com.assignment.models;
+package com.assignment.models.cart;
+
+import com.assignment.models.product.Product;
 
 public class CartEntry {
     private Product product;

@@ -2,7 +2,7 @@ package com.assignment.controllers;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
-import com.assignment.models.Product;
+import com.assignment.models.product.Product;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
