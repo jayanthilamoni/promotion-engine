@@ -10,6 +10,7 @@ public abstract class Promotion {
 
     public void apply(Map<String, CartEntry> cartEntryMap, Cart cart){
         double discount = getDiscount(cartEntryMap);
+        cart.setDiscount(discount);
         cart.setPromotionalMessage("Promotion with ID : "+getPromoId()+" applied, received a discount of - "+discount);
     };
 

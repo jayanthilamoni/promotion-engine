@@ -2,6 +2,7 @@ package com.assignment.controllers;
 
 import com.assignment.dba.ProductDB;
 import com.assignment.exceptions.NoProductWithIDException;
+import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
 import com.assignment.models.cart.CartEntryForm;
 import com.assignment.models.product.Product;
@@ -24,7 +25,7 @@ public class CartController {
     }
 
     @GetMapping("/cart")
-    public List<CartEntry> getCart(){
+    public Cart getCart(){
         return cartService.getCart();
     }
 

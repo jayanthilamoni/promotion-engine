@@ -2,17 +2,17 @@ package com.assignment.service;
 
 import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
-import com.assignment.models.product.Product;
+import com.assignment.strategies.PromotionStrategy;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CartServiceImpl implements CartService{
     private final Cart cart;
+    private final PromotionStrategy promotionStrategy;
 
-    public CartServiceImpl(Cart cart) {
+    public CartServiceImpl(Cart cart,PromotionStrategy promotionStrategy) {
         this.cart = cart;
+        this.promotionStrategy = promotionStrategy;
     }
 
     @Override
@@ -21,7 +21,8 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public List<CartEntry> getCart() {
-        return cart.getCartEntries();
+    public Cart getCart() {
+        promotionStrategy.applyPromotions(cart);
+        return cart;
     }
 }

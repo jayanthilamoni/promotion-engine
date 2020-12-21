@@ -40,7 +40,7 @@ public class DefaultPromotionStrategyTest {
         cart = Cart.getInstance();
         promotionsController = new PromotionsController(db);
         productDB = ProductDB.getInstance();
-        cartService = new CartServiceImpl(cart);
+        cartService = new CartServiceImpl(cart,strategy);
         controller = new CartController(cartService,productDB);
     }
     @Test
@@ -59,6 +59,18 @@ public class DefaultPromotionStrategyTest {
         result.add(promotionB);
         System.out.println(potentialPromotions.toString());
         assertTrue(potentialPromotions.containsAll(result));
+    }
+
+    @Test
+    public void whenPotentialPromotionSent_returnBestPromotion(){
+        addPromotionA();
+        addPromotionB();
+        setupProducts();
+        setupCart();
+        List<Promotion> potentialPromotions = strategy.getPotentialPromotions(getCartEntryMap(cart));
+        List<Promotion> result = new ArrayList<>();
+        Promotion promotionA = new NItemsOfSingleProductPromotion();
+        promotionA.setPromoId("APromo");
     }
 
     Map<String, CartEntry> getCartEntryMap(Cart cart){
