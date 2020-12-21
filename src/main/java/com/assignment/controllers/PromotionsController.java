@@ -37,6 +37,10 @@ public class PromotionsController {
             getPromotionDB().addPromotion(nItemsOfSingleProductPromotion);
         }else if(promotion instanceof ComboOfTwoProductsPromotion){
             ComboOfTwoProductsPromotion comboOfTwoProductsPromotion = (ComboOfTwoProductsPromotion) promotion;
+            comboOfTwoProductsPromotion.setProductIdA(promotionEntryForm.getProductA());
+            comboOfTwoProductsPromotion.setProductIdB(promotionEntryForm.getProductB());
+            comboOfTwoProductsPromotion.setBuyPrice(promotionEntryForm.getOfferPrice());
+            comboOfTwoProductsPromotion.setPromoId(promotionEntryForm.getPromotionId());
             getPromotionDB().addPromotion(comboOfTwoProductsPromotion);
         }
         return "Promotion with ID : "+promotion.getPromoId()+" added";
