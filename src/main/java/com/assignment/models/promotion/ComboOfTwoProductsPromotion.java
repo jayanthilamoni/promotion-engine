@@ -36,6 +36,15 @@ public class ComboOfTwoProductsPromotion extends Promotion {
 
     @Override
     public double getDiscount(Map<String, CartEntry> cartEntryMap) {
-        return 0;
+        CartEntry cartEntryA = cartEntryMap.get(getProductIdA());
+        CartEntry cartEntryB = cartEntryMap.get(getProductIdB());
+        double priceA = cartEntryA.getProduct().getPrice();
+        double priceB = cartEntryB.getProduct().getPrice();
+        double currentTotal = (cartEntryA.getQuantity()*priceA)+(cartEntryB.getQuantity()*priceB);
+        int minQuantity = Math.min(cartEntryA.getQuantity(),cartEntryB.getQuantity());
+        double offerPrice = (minQuantity*getBuyPrice())
+                +((cartEntryA.getQuantity()-minQuantity)*priceA)
+                +((cartEntryB.getQuantity()-minQuantity)*priceB);
+        return currentTotal-offerPrice;
     }
 }

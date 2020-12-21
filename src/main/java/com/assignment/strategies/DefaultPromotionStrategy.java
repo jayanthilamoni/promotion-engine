@@ -19,7 +19,8 @@ public class DefaultPromotionStrategy implements PromotionStrategy{
         this.promotionDB = promotionDB;
     }
 
-    private List<Promotion> getPotentialPromotions(Map<String, CartEntry> cartEntryMap){
+    @Override
+    public List<Promotion> getPotentialPromotions(Map<String, CartEntry> cartEntryMap){
         Map<String, Promotion> promotionMap = getPromotionDB().getAllPromotions();
         List<Promotion> potentialPromotions = new ArrayList<>();
         promotionMap.forEach((key,value)->{
@@ -29,16 +30,19 @@ public class DefaultPromotionStrategy implements PromotionStrategy{
                     potentialPromotions.add(value);
                 }
             }else if(value instanceof ComboOfTwoProductsPromotion){
-                value.getPromoId();
+                String productA = ((ComboOfTwoProductsPromotion) value).getProductIdA();
+                String productB = ((ComboOfTwoProductsPromotion) value).getProductIdB();
+                if(cartEntryMap.containsKey(productA) && cartEntryMap.containsKey(productB)){
+                    potentialPromotions.add(value);
+                }
             }
         });
         return potentialPromotions;
     }
 
     private Map<String, CartEntry> getCartEntryMap(Cart cart){
-        return cart.getCartEntries().stream().collect(Collectors.toMap((entry)->{
-            return entry.getProduct().getProductID();
-        },(entry)->{return entry;}));
+        return cart.getCartEntries().stream()
+                .collect(Collectors.toMap((entry)-> entry.getProduct().getProductID(),(entry)-> entry));
     }
 
     private Promotion getPromotionWithMaxDiscount(List<Promotion> potentialPromotion,Map<String,CartEntry> cartEntryMap){
@@ -59,6 +63,6 @@ public class DefaultPromotionStrategy implements PromotionStrategy{
         Map<String,CartEntry> cartEntryMap = getCartEntryMap(cart);
         List<Promotion> potentialPromotion = getPotentialPromotions(cartEntryMap);
         Promotion bestPromotion = getPromotionWithMaxDiscount(potentialPromotion,cartEntryMap);
-
+        bestPromotion.apply(cartEntryMap,cart);
     }
 }

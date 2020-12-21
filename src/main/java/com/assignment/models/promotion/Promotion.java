@@ -21,4 +21,12 @@ public abstract class Promotion {
     public void setPromoId(String promoId) {
         this.promoId = promoId;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Promotion){
+            return this.getPromoId().equals(((Promotion) obj).getPromoId());
+        }
+        return false;
+    }
 }

@@ -10,11 +10,19 @@ import java.util.UUID;
 public class Cart {
     private UUID cartId;
     private List<CartEntry> cartEntries;
+    private static Cart cart;
     private double discount;
     private String promotionalMessage;
 
     public Cart() {
         cartEntries = new ArrayList<>();
+    }
+
+    public static Cart getInstance(){
+        if(cart==null){
+            cart = new Cart();
+        }
+        return cart;
     }
 
     public UUID getCartId() {
