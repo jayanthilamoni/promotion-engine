@@ -2,9 +2,10 @@ package com.assignment.controllertest;
 
 import com.assignment.controllers.ProductController;
 import com.assignment.dba.ProductDB;
+import com.assignment.models.product.Product;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductControllerTest {
     ProductDB db;
@@ -15,17 +16,11 @@ public class ProductControllerTest {
         productController = new ProductController(db);
     }
 
-    /*@Test
-    public void whenPriceNotNumber_throwsNumberFormatException(){
-        String productId = "A";
-        String message = productController.addProduct("A","WAS");
-        assertTrue(message.contains("Cannot"));
-    }
-
     @Test
     public void whenPriceIsNumber_createsProductWithID(){
         String productId = "A";
-        String message = productController.addProduct(productId,"24");
+        Product product = new Product(productId,24);
+        String message = productController.addProduct(product);
         assertTrue(message.contains(productId));
-    }*/
+    }
 }

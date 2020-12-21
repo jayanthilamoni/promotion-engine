@@ -1,6 +1,5 @@
 package com.assignment.models.promotion;
 
-import com.assignment.models.cart.Cart;
 import com.assignment.models.cart.CartEntry;
 
 import java.util.Map;

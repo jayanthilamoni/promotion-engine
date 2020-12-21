@@ -2,14 +2,10 @@ package com.assignment.service;
 
 import com.assignment.dba.PromotionDB;
 import com.assignment.factories.PromotionFactory;
-import com.assignment.models.cart.Cart;
-import com.assignment.models.cart.CartEntry;
 import com.assignment.models.promotion.Promotion;
 import com.assignment.strategies.PromotionStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 public class PromotionServiceImpl implements PromotionService{
@@ -24,11 +20,6 @@ public class PromotionServiceImpl implements PromotionService{
     @Override
     public Promotion getPromotionByType(int promotionType) {
         return PromotionFactory.getPromotion(promotionType);
-    }
-
-    @Override
-    public void applyPromotions(Cart cart) {
-
     }
 
     public PromotionDB getPromotionDB() {

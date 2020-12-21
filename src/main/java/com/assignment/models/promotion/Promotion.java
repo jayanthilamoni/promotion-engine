@@ -12,7 +12,7 @@ public abstract class Promotion {
         double discount = getDiscount(cartEntryMap);
         cart.setDiscount(discount);
         cart.setPromotionalMessage("Promotion with ID : "+getPromoId()+" applied, received a discount of - "+discount);
-    };
+    }
 
     public abstract double getDiscount(Map<String, CartEntry> cartEntryMap);
     public String getPromoId() {

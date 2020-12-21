@@ -3,9 +3,9 @@ package com.assignment.controllertest;
 import com.assignment.controllers.PromotionsController;
 import com.assignment.dba.PromotionDB;
 import com.assignment.models.promotion.PromotionEntryForm;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PromotionControllerTest {
     private final PromotionsController promotionsController;

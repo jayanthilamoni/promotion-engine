@@ -13,16 +13,14 @@ import com.assignment.models.promotion.Promotion;
 import com.assignment.models.promotion.PromotionEntryForm;
 import com.assignment.service.CartService;
 import com.assignment.service.CartServiceImpl;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DefaultPromotionStrategyTest {
 
@@ -59,18 +57,6 @@ public class DefaultPromotionStrategyTest {
         result.add(promotionB);
         System.out.println(potentialPromotions.toString());
         assertTrue(potentialPromotions.containsAll(result));
-    }
-
-    @Test
-    public void whenPotentialPromotionSent_returnBestPromotion(){
-        addPromotionA();
-        addPromotionB();
-        setupProducts();
-        setupCart();
-        List<Promotion> potentialPromotions = strategy.getPotentialPromotions(getCartEntryMap(cart));
-        List<Promotion> result = new ArrayList<>();
-        Promotion promotionA = new NItemsOfSingleProductPromotion();
-        promotionA.setPromoId("APromo");
     }
 
     Map<String, CartEntry> getCartEntryMap(Cart cart){
